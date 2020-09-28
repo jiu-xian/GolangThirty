@@ -29,20 +29,31 @@
 
 
 ## 1-Day：基础语法学习：
-- 声明变量的几个要点
+1. 声明变量的几个要点
     > - 变量类型写在变量名之后
-      - 编译器可以推测变量类型
-      - 没有char，只有rune
-      - 原生支持复数类型
+    > - 默认值声明/声明+赋值/初始值声明/简短声明/
+    > - 块内声明/函数内声明/包内声明
+    > - 编译器可以推测变量类型
+    > - 没有char，只有rune
+    > - 原生支持复数类型
 
-- Go内建变量的类型
+2. Go内建变量的类型
     > - bool, string
-      - (u)int, (u)int8, (u)int16, (u)int32, (u)int64, uintptr
-      -  byte, rune 
-      - float32, float64, complex64, complex128
-      - Go的类型转换是强制的
+    > - (u)int, (u)int8, (u)int16, (u)int32, (u)int64, uintptr
+    > -  byte, rune 
+    > - float32, float64, complex64, complex128
+    > - Go的类型转换是强制的
 
-- 常量和枚举
+3. 常量和枚举
     > - 未声明类型的const常量可以以任何类型使用
-      - 使用const代码块进行普通枚举
-      - 使用const代码块和iota公式进行自增值枚举
+    > - 使用const代码块进行普通枚举
+    > - 使用const代码块和iota公式进行自增值枚举
+
+4. 条件语句
+    > - if……/if……else……/if……else if……else……/基本用法
+    > - if语句内可以赋值变量，但此变量仅限于该if代码块内使用
+    > - switch...case...语句的用法
+    > - switch后可以不加条件语句
+    > - switch语句中不需要break
+    > - for循环的基本用法
+    > - for省略初始条件、结束条件和递增表达式的用法

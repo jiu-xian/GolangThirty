@@ -4,10 +4,13 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"math"
+	"strconv"
 )
 
-//定义和使用变量和常量
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//1：定义和使用变量
 
 var (
 	aa = 3
@@ -16,7 +19,6 @@ var (
 )
 
 func variableZeroValue() {
-	//定义和使用变量和常量
 	var a int
 	var b string
 	var c bool
@@ -50,6 +52,8 @@ func variableShorter() {
 	fmt.Println("-----------------------------------")
 }
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//3:常量和枚举
 func consts() {
 	const filename string = "abc.txt"
 	const a, b = 3, 4 //此处未定义a，b的类型
@@ -85,6 +89,77 @@ func enums() {
 	fmt.Println("-----------------------------------")
 }
 
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//4-条件语句
+func iftest1(v int) int {
+	if v > 100 {
+		return 100
+	} else if v < 0 {
+		return 0
+	} else {
+		return v
+	}
+}
+
+func iftest2() {
+	const filename = "abc.txt"
+	if contents, err := ioutil.ReadFile(filename); err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Printf("%s\n", contents)
+	}
+	//if代码块外无法再打印contents，因为contents变量属于if区块内的变量
+}
+
+func eval(a, b int, op string) int {
+	var result int
+	switch op {
+	case "+":
+		result = a + b
+	case "-":
+		result = a - b
+	case "*":
+		result = a * b
+	case "/":
+		result = a / b
+	default:
+		panic("unsurpported operator: " + op)
+	}
+	return result
+}
+
+func grade(score int) string {
+	g := ""
+	switch {
+	case score < 0 || score > 100:
+		panic(fmt.Sprintf(
+			"Wrong score: %d", score))
+	case score < 60:
+		g = "F"
+	case score < 70:
+		g = "D"
+	case score < 80:
+		g = "C"
+	case score < 90:
+		g = "B"
+	case score <= 100:
+		g = "A"
+	}
+	return g
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//循环
+func convertToBin(n int) string {
+	var result string = ""
+	for ; n > 0; n /= 2 {
+		lsb := n % 2
+		result = strconv.Itoa(lsb) + result
+	}
+	return result
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 var arr1 = [3]int{21, 22, 23}
 
 func testArray() {
@@ -118,6 +193,28 @@ func main() {
 
 	consts()
 	enums()
+
+	fmt.Println(iftest1(120))
+	fmt.Println(iftest1(-30))
+	fmt.Println(iftest1(97))
+	iftest2()
+	fmt.Println(eval(3, 5, "+"))
+	fmt.Println(eval(3, 5, "-"))
+	fmt.Println(eval(3, 5, "*"))
+	fmt.Println(eval(3, 5, "/"))
+	//fmt.Println(eval(3, 5, "a"))
+
+	fmt.Println(
+		grade(53),
+		grade(76),
+		grade(98),
+	)
+
+	fmt.Println(
+		convertToBin(13),
+		convertToBin(21),
+		convertToBin(13729),
+	)
 
 	testArray()
 	fmt.Println(arr1)
