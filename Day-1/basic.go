@@ -2,29 +2,87 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
 //定义和使用变量和常量
-var a string
-var b int = 2
-var c, d = "hello", "world"
 
-const g = 10
+var (
+	aa = 3
+	ss = "kkk"
+	bb = true
+)
 
-func testVariable() {
+func variableZeroValue() {
 	//定义和使用变量和常量
-	e, f := 3, 5 //此类语句只能在函数内使用，仅作为局部变量
-	fmt.Println("打印初始变量:", a, b, c, d, e, f, g)
+	var a int
+	var b string
+	var c bool
+	fmt.Printf("%d %q %t\n", a, b, c)
+	fmt.Println("-----------------------------------")
 
-	a, c, d = "hello", "golang", "world"
-	b, e, f = 5, 3, 9
-	//g = 15	errors：此处不能再给g赋值，因为g是常量
-	fmt.Println("打印赋值后的变量:", a, b, c, d, e, f, g)
+}
 
-	l := &a //将变量a的地址传递给指针l
-	fmt.Println("打印变量的指针：")
-	fmt.Println(l, *l, &b) //指针l的值（*l）
+func variableInitialValue() {
+	var a, d int
+	var b string
+	var c bool
+	a, d = 3, 5
+	b = "hello"
+	c = false
+	fmt.Printf("%d %q %t %d\n", a, b, c, d)
+	fmt.Println("-----------------------------------")
 
+}
+
+func variableTypeDeduction() {
+	var a, b, c, d = 3, 5, "hello", true
+	fmt.Printf("%d %d %s %t\n", a, b, c, d)
+	fmt.Println("-----------------------------------")
+}
+
+func variableShorter() {
+	a, b, c, d := 3, 5, "hello", true
+	b = 5
+	fmt.Printf("%d %d %s %t\n", a, b, c, d)
+	fmt.Println("-----------------------------------")
+}
+
+func consts() {
+	const filename string = "abc.txt"
+	const a, b = 3, 4 //此处未定义a，b的类型
+	var c int
+	c = int(math.Sqrt(a*a + b*b)) //此处根据需要将a，b类型以float来处理
+	fmt.Println(filename, a, b, c)
+	fmt.Println("-----------------------------------")
+}
+
+func enums() {
+	const (
+		golang = 1
+		python = 2
+		cpp    = 3
+		java   = 4
+	)
+	const (
+		a = iota
+		b
+		c
+		d
+	)
+	const (
+		e = 1 << (10 * iota)
+		f
+		_
+		h
+		i
+	)
+	fmt.Println(golang, python, cpp, java)
+	fmt.Println(a, b, c, d)
+	fmt.Println(e, f, h, i)
+	fmt.Println("-----------------------------------")
 }
 
 var arr1 = [3]int{21, 22, 23}
@@ -52,9 +110,14 @@ func testArray() {
 }
 
 func main() {
-	testVariable()
-	fmt.Println("打印赋值后的变量:", a, b, c, d, g)
-	fmt.Println("------------------------------------")
+	variableZeroValue()
+	variableInitialValue()
+	variableTypeDeduction()
+	variableShorter()
+	fmt.Println(aa, bb, ss)
+
+	consts()
+	enums()
 
 	testArray()
 	fmt.Println(arr1)
