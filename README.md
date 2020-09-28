@@ -71,6 +71,7 @@
     > - 注意指针、地址、值之间的关系和差别
 
 
+
 ## Day-2: Golang的内建容器（数组array、切片slice、映射map）：(*代码示例和注释见./Day-2/container.go*)
 1. 数组：array
     > - 数组的定义（var/:=/[3]int/[...]int)
@@ -79,16 +80,33 @@
 
 2. 切片：slice
     > - slice的特性
-        > - slice本身没有值，它是对底层数组的一个view
-        > - slice的表示方法
-        > - reslice是对同一个底层数组的不同view
-        > - slice的扩展,可以向后扩展，不能向前扩展,向后扩展时不能超越底层数组
+        >> - slice本身没有值，它是对底层数组的一个view
+        >> - slice的表示方法
+        >> - reslice是对同一个底层数组的不同view
+        >> - slice的扩展,可以向后扩展，不能向前扩展,向后扩展时不能超越底层数组
     > - slice的内部结构（ptr/len/cap的概念的用法)
-        > - ptr(pointer):指向slice的第一个元素
-        > - len(length):该slice的长度
-        > - cap(capacity):该slice从第一个元素到原始数组最后一个元素的容量
+        >> - ptr(pointer):指向slice的第一个元素
+        >> - len(length):该slice的长度
+        >> - cap(capacity):该slice从第一个元素到原始数组最后一个元素的容量
     > - slice的操作
-        > - 创建slice
-        > - 增加slice的元素
-        > - 删除slice的元素
-        > - slice的拷贝
+        >> - 创建slice
+        >> - 增加slice的元素
+        >> - 删除slice的元素
+        >> - slice的拷贝
+
+3. 映射：map
+    > - map的定义：map[k]v, map[k1]map[k2]v, make(map[string]int)
+    > - map的操作：
+        >> - 获取元素：m[key]
+        >> - 获取元素时，如果key不存在，返回value类型的初始值
+        >> - 用 value， ok := m[key] 来判断是否存在对应的key
+        >> - 使用delete删除一个key
+        >> - 使用range遍历key，或者遍历key，value对，但是不保证遍历顺序，可将key赋值给一个slice进行排序遍历
+        >> - 使用len获得元素的个数
+    > - map的key的类型
+        >> - map使用哈希表，必须可以比较相等
+        >> - 除了slice,map,function的内建类型都可以作为key
+        >> - struct类型中如果不包括上述字段，也可以作为key
+
+
+

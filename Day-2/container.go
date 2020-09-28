@@ -107,6 +107,39 @@ func creatSlice() {
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //映射map
+func mapTest() {
+	m1 := map[string]string{
+		"name":     "jiuxian",
+		"learning": "golang",
+		"feeling":  "notbad",
+		"purpose":  "blockchain",
+	}
+	var m2 map[string]int      //此处的zerovalue是nil
+	m3 := make(map[string]int) //此处的zerovalue是0
+
+	fmt.Println(m1)
+	fmt.Println(m2)
+	fmt.Println(m3)
+
+	a := m1["name"]
+	fmt.Println(a)
+
+	b := m1["nime"]
+	fmt.Println(b)
+
+	for k, v := range m1 {
+		fmt.Println(k, v)
+	}
+
+	delete(m1, "name")
+
+	if v, ok := m1["name"]; ok {
+		fmt.Println(v, ok)
+	} else {
+		fmt.Println("您要找的值不存在", "m1的元素数量为： ", len(m1))
+	}
+
+}
 
 func main() {
 	fmt.Println("Golang数据结构练习：")
@@ -121,5 +154,7 @@ func main() {
 	sliceOperat()
 	creatSlice()
 	fmt.Println("----------------------------------")
+
+	mapTest()
 
 }
