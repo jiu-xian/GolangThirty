@@ -150,6 +150,14 @@ func grade(score int) string {
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //循环
+func adds() int {
+	sum := 0
+	for i := 0; i < 100; i++ {
+		sum += i
+	}
+	return sum
+}
+
 func convertToBin(n int) string {
 	var result string = ""
 	for ; n > 0; n /= 2 {
@@ -159,29 +167,37 @@ func convertToBin(n int) string {
 	return result
 }
 
+func forever() {
+	for {
+		fmt.Println("abc")
+	}
+}
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-var arr1 = [3]int{21, 22, 23}
+//函数
+func div(a, b int) (int, error) {
+	if b == 0 {
+		return 0, fmt.Errorf("不能除以0")
+	}
+	return a / b, nil
+}
 
-func testArray() {
-	//定义和使用数组
-	var arr2 [3]int
-	var arr3 = [5]int{1, 2, 3, 4, 5}
-	arr4 := [3]string{"hello", "golang", "world"}
-	arr5 := [...]int{1, 2, 3, 4, 5, 6, 7}
-	var grid [4][5]int
-	fmt.Println("打印原始数组：")
-	fmt.Println(arr1, arr2, arr3, arr4, arr5, grid)
+func apply(op func(a, b int) int, a, b int) int {
+	return op(a, b)
 
-	arr2 = [3]int{11, 12, 13}
-	//arr3 = [4]int{1, 2, 3, 4}  errors：[5]int和[4]int是两种不同的类型，不能传递
-	//arr5 = [3]int{1, 2, 3}    errors:不同类型数组不能传递值
-	fmt.Println("打印传递值之后的数组：")
-	fmt.Println(arr2)
+}
+func pow(a, b int) int {
+	return int(math.Pow(float64(a), float64(b)))
+}
 
-	arr2[0] = 111
-	arr1[0] = 222
-	fmt.Println(arr1, arr2)
-
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//指针
+func pointerTest() {
+	var a int = 2
+	var pa *int = &a
+	*pa = 3
+	fmt.Println(a)
+	fmt.Println(pa)
 }
 
 func main() {
@@ -210,14 +226,18 @@ func main() {
 		grade(98),
 	)
 
+	fmt.Println(adds())
+	//forever()		这是一个无限循环，暂不执行
 	fmt.Println(
 		convertToBin(13),
 		convertToBin(21),
 		convertToBin(13729),
 	)
+	fmt.Println(div(3, 0))
+	fmt.Println(div(3, 4))
 
-	testArray()
-	fmt.Println(arr1)
-	fmt.Println("-----------------------------------")
+	fmt.Println(apply(pow, 3, 4))
+
+	pointerTest()
 
 }
