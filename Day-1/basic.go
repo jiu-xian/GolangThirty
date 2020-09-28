@@ -200,6 +200,33 @@ func pointerTest() {
 	fmt.Println(pa)
 }
 
+func swap1(a, b int) {
+	a, b = b, a
+}
+
+func swap2(a, b *int) {
+	*a, *b = *b, *a
+}
+
+func swap3(a, b int) (int, int) {
+	return b, a
+}
+
+func swapTest() {
+	a, b := 3, 4
+	swap1(a, b)
+	fmt.Println(a, b)
+
+	swap2(&a, &b)
+	fmt.Println(a, b)
+
+	a, b = swap3(a, b)
+	fmt.Println(a, b)
+
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 func main() {
 	variableZeroValue()
 	variableInitialValue()
@@ -209,6 +236,7 @@ func main() {
 
 	consts()
 	enums()
+	fmt.Println("-----------------------------------")
 
 	fmt.Println(iftest1(120))
 	fmt.Println(iftest1(-30))
@@ -225,6 +253,7 @@ func main() {
 		grade(76),
 		grade(98),
 	)
+	fmt.Println("-----------------------------------")
 
 	fmt.Println(adds())
 	//forever()		这是一个无限循环，暂不执行
@@ -233,11 +262,15 @@ func main() {
 		convertToBin(21),
 		convertToBin(13729),
 	)
+	fmt.Println("-----------------------------------")
+
 	fmt.Println(div(3, 0))
 	fmt.Println(div(3, 4))
 
 	fmt.Println(apply(pow, 3, 4))
+	fmt.Println("-----------------------------------")
 
 	pointerTest()
+	swapTest()
 
 }
