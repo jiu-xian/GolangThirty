@@ -70,3 +70,25 @@
     > - go的参数传递都是值传递
     > - 注意指针、地址、值之间的关系和差别
 
+
+## Day-2: Golang的内建容器（数组array、切片slice、映射map）：(*代码示例和注释见./Day-2/container.go*)
+1. 数组：array
+    > - 数组的定义（var/:=/[3]int/[...]int)
+    > - 数组是值类型，函数调用的是原始数组的拷贝
+    > - [3]int 和 [5]int是两种不同类型的数组，不能相互赋值
+
+2. 切片：slice
+    > - slice的特性
+        > - slice本身没有值，它是对底层数组的一个view
+        > - slice的表示方法
+        > - reslice是对同一个底层数组的不同view
+        > - slice的扩展,可以向后扩展，不能向前扩展,向后扩展时不能超越底层数组
+    > - slice的内部结构（ptr/len/cap的概念的用法)
+        > - ptr(pointer):指向slice的第一个元素
+        > - len(length):该slice的长度
+        > - cap(capacity):该slice从第一个元素到原始数组最后一个元素的容量
+    > - slice的操作
+        > - 创建slice
+        > - 增加slice的元素
+        > - 删除slice的元素
+        > - slice的拷贝
