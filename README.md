@@ -109,5 +109,18 @@
         > > - struct类型中如果不包括上述字段，也可以作为key
     > - 例题：最长不重复字符串
 
+4. 字符串处理
+    > - rune相当于其他语言里的char
+    > - 使用range遍历position，rune对，注意position并不是逐一递增的
+    > - 使用utf8.runeCountInString()获得字符数量
+    > - 使用len（）获得字节长度
+    > - 使用[]byte()获得字节slice
+    > - 使用[]rune()获得字符slice
+    > - 常用字符串处理：
+        > > - Fields,Split,Join;
+        > > - Cointains, Index;
+        > > - ToLower, ToUpper;
+        > > - Trim, TrimRight, TrimLeft
+
 
 
