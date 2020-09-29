@@ -138,7 +138,23 @@ func mapTest() {
 	} else {
 		fmt.Println("您要找的值不存在", "m1的元素数量为： ", len(m1))
 	}
+}
 
+func nonRepeating(s string) int {
+	lastoccurred := make(map[byte]int)
+	start := 0
+	maxlength := 0
+	for i, v := range []byte(s) {
+		if lasti, ok := lastoccurred[v]; ok && lasti >= start {
+			start = lasti + 1
+		}
+		if i-start+1 > maxlength {
+			maxlength = i - start + 1
+		}
+
+		lastoccurred[v] = i
+	}
+	return maxlength
 }
 
 func main() {
@@ -156,5 +172,12 @@ func main() {
 	fmt.Println("----------------------------------")
 
 	mapTest()
+
+	fmt.Println(nonRepeating("abcdacdebcd"))
+	fmt.Println(nonRepeating("abcdefg"))
+	fmt.Println(nonRepeating(""))
+	fmt.Println(nonRepeating("我爱family！"))
+	fmt.Println(nonRepeating("一二三三二一"))
+	fmt.Println("----------------------------------")
 
 }

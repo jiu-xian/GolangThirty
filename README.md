@@ -100,13 +100,14 @@
         > > - 获取元素：m[key]
         > > - 获取元素时，如果key不存在，返回value类型的初始值
         > > - 用 value， ok := m[key] 来判断是否存在对应的key
-        > > - 使用delete删除一个key
+        > > - 使用delete删除一个key，使用m[k]=v增加元素
         > > - 使用range遍历key，或者遍历key，value对，但是不保证遍历顺序，可将key赋值给一个slice进行排序遍历
         > > - 使用len获得元素的个数
     > - map的key的类型
         > > - map使用哈希表，必须可以比较相等
         > > - 除了slice,map,function的内建类型都可以作为key
         > > - struct类型中如果不包括上述字段，也可以作为key
+    > - 例题：最长不重复字符串
 
 
 
