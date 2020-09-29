@@ -191,6 +191,63 @@ func stringOperate() {
 	}
 }
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//结构体
+type treeNode struct {
+	value       int
+	left, right *treeNode
+}
+
+func (node treeNode) print() {
+	fmt.Println(node.value)
+	fmt.Println()
+}
+
+func (node *treeNode) setValue(value int) {
+	node.value = value
+}
+
+func createTreeNode(value int) *treeNode {
+	return &treeNode{value: value}
+}
+
+func (node *treeNode) traverse() {
+	if node == nil {
+		return
+	}
+	node.left.traverse()
+	node.print()
+	node.right.traverse()
+}
+
+func structTest() {
+	var root treeNode
+	root2 := treeNode{}
+	root3 := treeNode{6, nil, nil}
+
+	root = treeNode{value: 3}
+	root.left = &treeNode{}
+	root.right = &treeNode{5, nil, nil}
+	root.right.left = new(treeNode)
+	root.left.right = createTreeNode(2)
+
+	nodes := []treeNode{
+		{value: 6},
+		{},
+		{5, nil, &root},
+	}
+	fmt.Println(root, root2, root3, nodes)
+
+	root.print()
+	root2.print()
+	root3.print()
+
+	root.left.right.setValue(4)
+	root.left.right.print()
+	fmt.Println("遍历此结构：")
+	root.traverse()
+}
+
 func main() {
 	fmt.Println("Golang数据结构练习：")
 	arrayTest()
@@ -215,5 +272,8 @@ func main() {
 	fmt.Println("----------------------------------")
 
 	stringOperate()
+	fmt.Println("----------------------------------")
+
+	structTest()
 
 }

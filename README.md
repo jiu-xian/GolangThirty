@@ -122,5 +122,19 @@
         > > - ToLower, ToUpper;
         > > - Trim, TrimRight, TrimLeft
 
+5. 结构体：struct
+    > - golang只有封装，没有类和继承
+    > - struct类型的定义：type name struct {a string, b int , c ptr, d structtypename, ...}
+    > - struct变量的创建：
+        > > - var name structtypename
+        > > - name := structtypename{}
+        > > - name.a = /  name.d.a =
+        > > - 可以使用自定义的工厂函数创建变量
+    > - 为struct类型定义方法，可用于所有该类型的结构体变量
+        > > - struct的方法是值传递
+        > > - 可以使用指针类型作为接受者，这样才能改变结构体内的值
+        > > - nil的指针也可以传递
+        > > - 编译器可以自行根据需要传递指针或值
+
 
 
