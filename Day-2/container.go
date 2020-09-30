@@ -4,6 +4,7 @@ package main
 
 import (
 	"fmt"
+	"learngo/GolangThirty/Day-2/tree"
 	"unicode/utf8"
 )
 
@@ -193,59 +194,49 @@ func stringOperate() {
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //结构体
-type treeNode struct {
-	value       int
-	left, right *treeNode
+type myTreeNode struct {
+	node *tree.Node
 }
 
-func (node treeNode) print() {
-	fmt.Println(node.value)
-	fmt.Println()
-}
-
-func (node *treeNode) setValue(value int) {
-	node.value = value
-}
-
-func createTreeNode(value int) *treeNode {
-	return &treeNode{value: value}
-}
-
-func (node *treeNode) traverse() {
-	if node == nil {
+func (mynode *myTreeNode) downTraverse() {
+	if mynode == nil || mynode.node == nil {
 		return
 	}
-	node.left.traverse()
-	node.print()
-	node.right.traverse()
+	left := myTreeNode{mynode.node.Left}
+	left.downTraverse()
+	right := myTreeNode{mynode.node.Right}
+	right.downTraverse()
+	mynode.node.Print()
 }
 
 func structTest() {
-	var root treeNode
-	root2 := treeNode{}
-	root3 := treeNode{6, nil, nil}
+	var root tree.Node
+	root2 := tree.Node{}
+	root3 := tree.Node{Value: 6, Left: nil, Right: nil}
 
-	root = treeNode{value: 3}
-	root.left = &treeNode{}
-	root.right = &treeNode{5, nil, nil}
-	root.right.left = new(treeNode)
-	root.left.right = createTreeNode(2)
+	root = tree.Node{Value: 3}
+	root.Left = &tree.Node{}
+	root.Right = &tree.Node{5, nil, nil}
+	root.Right.Left = new(tree.Node)
+	root.Left.Right = tree.CreateNode(2)
 
-	nodes := []treeNode{
-		{value: 6},
+	nodes := []tree.Node{
+		{Value: 6},
 		{},
-		{5, nil, &root},
+		{Value: 5, Left: nil, Right: &root},
 	}
 	fmt.Println(root, root2, root3, nodes)
 
-	root.print()
-	root2.print()
-	root3.print()
+	root.Print()
+	root2.Print()
+	root3.Print()
 
-	root.left.right.setValue(4)
-	root.left.right.print()
+	root.Left.Right.SetValue(4)
+	root.Left.Right.Print()
 	fmt.Println("遍历此结构：")
-	root.traverse()
+	root.Traverse()
+	myroot := myTreeNode{node: &root}
+	myroot.downTraverse()
 }
 
 func main() {
