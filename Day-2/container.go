@@ -216,7 +216,7 @@ func structTest() {
 
 	root = tree.Node{Value: 3}
 	root.Left = &tree.Node{}
-	root.Right = &tree.Node{5, nil, nil}
+	root.Right = &tree.Node{Value: 5}
 	root.Right.Left = new(tree.Node)
 	root.Left.Right = tree.CreateNode(2)
 

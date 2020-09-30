@@ -79,35 +79,35 @@
     > - [3]int 和 [5]int是两种不同类型的数组，不能相互赋值
 
 2. 切片：slice
-    > - slice的特性
-        > > - slice本身没有值，它是对底层数组的一个view
-        > > - slice的表示方法
-        > > - reslice是对同一个底层数组的不同view
-        > > - slice的扩展,可以向后扩展，不能向前扩展,向后扩展时不能超越底层数组
-    > - slice的内部结构（ptr/len/cap的概念的用法)
-        > > - ptr(pointer):指向slice的第一个元素
-        > > - len(length):该slice的长度
-        > > - cap(capacity):该slice从第一个元素到原始数组最后一个元素的容量
-    > - slice的操作
-        > > - 创建slice
-        > > - 增加slice的元素
-        > > - 删除slice的元素
-        > > - slice的拷贝
+    > - slice的特性  
+    > > - slice本身没有值，它是对底层数组的一个view  
+    > > - slice的表示方法  
+    > > - reslice是对同一个底层数组的不同view  
+    > > - slice的扩展,可以向后扩展，不能向前扩展,向后扩展时不能超越底层数组
+    > - slice的内部结构（ptr/len/cap的概念的用法)  
+    > > - ptr(pointer):指向slice的第一个元素  
+    > > - len(length):该slice的长度  
+    > > - cap(capacity):该slice从第一个元素到原始数组最后一个元素的容量
+    > - slice的操作  
+    > > - 创建slice  
+    > > - 增加slice的元素  
+    > > - 删除slice的元素  
+    > > - slice的拷贝  
 
 3. 映射：map
     > - map的定义：map[k]v, map[k1]map[k2]v, make(map[string]int)
-    > - map的操作：
-        > > - 获取元素：m[key]
-        > > - 获取元素时，如果key不存在，返回value类型的初始值
-        > > - 用 value， ok := m[key] 来判断是否存在对应的key
-        > > - 使用delete删除一个key，使用m[k]=v增加元素
-        > > - 使用range遍历key，或者遍历key，value对，但是不保证遍历顺序，可将key赋值给一个slice进行排序遍历
-        > > - 使用len获得元素的个数
-    > - map的key的类型
-        > > - map使用哈希表，必须可以比较相等
-        > > - 除了slice,map,function的内建类型都可以作为key
-        > > - struct类型中如果不包括上述字段，也可以作为key
-    > - 例题：最长不重复字符串
+    > - map的操作:  
+    > > - 获取元素：m[key]  
+    > > - 获取元素时，如果key不存在，返回value类型的初始值  
+    > > - 用 value， ok := m[key] 来判断是否存在对应的key  
+    > > - 使用delete删除一个key，使用m[k]=v增加元素  
+    > > - 使用range遍历key，或者遍历key，value对，但是不保证遍历顺序，可将key赋值给一个slice进行排序遍历  
+    > > - 使用len获得元素的个数  
+    > - map的key的类型  
+    > > - map使用哈希表，必须可以比较相等  
+    > > - 除了slice,map,function的内建类型都可以作为key  
+    > > - struct类型中如果不包括上述字段，也可以作为key  
+    > - 例题：最长不重复字符串  
 
 4. 字符串处理
     > - rune相当于其他语言里的char
@@ -116,27 +116,27 @@
     > - 使用len（）获得字节长度
     > - 使用[]byte()获得字节slice
     > - 使用[]rune()获得字符slice
-    > - 常用字符串处理：
-        > > - Fields,Split,Join;
-        > > - Cointains, Index;
-        > > - ToLower, ToUpper;
-        > > - Trim, TrimRight, TrimLeft
+    > - 常用字符串处理：  
+    > > - Fields,Split,Join;  
+    > > - Cointains, Index;  
+    > > - ToLower, ToUpper;  
+    > > - Trim, TrimRight, TrimLeft  
 
 5. 结构体：struct
     > - golang只有封装，没有类和继承
     > - struct类型的定义：type name struct {a string, b int , c ptr, d structtypename, ...}
-    > - struct变量的创建：
-        > > - var name structtypename
-        > > - name := structtypename{}
-        > > - name.a = /  name.d.a =
-        > > - 可以使用自定义的工厂函数创建变量
-    > - 为struct类型定义方法，可用于所有该类型的结构体变量
-        > > - struct的方法是值传递
-        > > - 可以使用指针类型作为接受者，这样才能改变结构体内的值
-        > > - nil的指针也可以传递
-        > > - 编译器可以自行根据需要传递指针或值
+    > - struct变量的创建：  
+    > > - var name structtypename  
+    > > - name := structtypename{}  
+    > > - name.a = /  name.d.a =  
+    > > - 可以使用自定义的工厂函数创建变量  
+    > - 为struct类型定义方法，可用于所有该类型的结构体变量  
+    > > - struct的方法是值传递  
+    > > - 可以使用指针类型作为接受者，这样才能改变结构体内的值  
+    > > - nil的指针也可以传递  
+    > > - 编译器可以自行根据需要传递指针或值  
 
-6. 包、封装和扩展：
+6. 包、封装和扩展:(关于包的封装和扩展，还需要多加练习以熟练掌握)
     > - 每个目录只能有一个包，但可以有多个文件
     > - main包是程序的入口
     > - 命名采取CamelCase驼峰命名法
@@ -145,7 +145,7 @@
     > - 如果原有的包中的某个结构不包括所需要的方法，可以对其进行扩展  
     > > - 使用组合的方式扩展已有类型  
     > > - 定义别名的方式扩展已有类型  
-    > > - 使用内嵌的方式扩展已有类型
+    > > - 使用内嵌的方式扩展已有类型  
 
 
 
