@@ -193,14 +193,22 @@
     > > - 获取panic的值  
     > > - 如果无法处理，可重新panic  
 
-4. 测试与性能调优
+4. 测试与性能调优  
     > - 测试  
-    > > - 表格驱动测试的编写
-    > > - 命令行运行当前目录的所有测试：`$: go test . `
-    > > - 代码覆盖率测试
-    > > - 性能测试
+    > > - 表格驱动测试的编写  
+    > > - 命令行运行当前目录的所有测试：`$: go test . `  
+    > > - 代码覆盖率测试  
+    > > - 性能测试  
     > - 性能调优  
+    > > 1. 先使用-cpuprofile获取性能数据： `$: go test -bench . -cpuprofile`  
+    > > 2. 再使用go tool pprof查看性能数据: `$: go tool pprof cpu.out`  
+    > > 3. 分析慢在哪里: 可以使用web命令查看可视化结果，需要安装一个第三方工具：[Graphviz](http://www.graphviz.org)  
+    > > 4. 优化代码  
     > - 生成文档和示例  
+    > > 1. 安装go doc 工具： `$: go get golang.org/x/tools/cmd/godoc`  
+    > > 2. `$: go doc`  
+    > > 3. `$: go doc packagename`  
+    > > 4. `$: godoc -http :6060`  
 
 
 
