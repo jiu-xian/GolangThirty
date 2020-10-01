@@ -209,7 +209,27 @@
     > > 2. `$: go doc`  
     > > 3. `$: go doc packagename`  
     > > 4. `$: godoc -http :6060`  
-
+    > > - 可以生成example示例（一种特殊的测试)  
+  
+5. Goroutine  
+    > - Goroutine代码实现  
+    > - Goroutine特点  
+    > > - 轻量级“线程”  
+    > > - 非抢占式任务处理，由协程主动交出控制权  
+    > > - 编译器层面的多任务  
+    > > - 多个协程可能在一个或多个线程上运行   
+    > > - 可以使用runtime.Gosched()主动让出控制权  
+    > - Goroutine调度器  
+    > > - 任何函数只需要在前面加上go就可以交给调度器进行调度  
+    > > - 不需要在定义时区分是否是异步函数  
+    > > - 调度器在合适的点进行切换  
+    > > - 使用 -race来检测数据访问冲突  
+    > - Goroutine可能的切换点  
+    > > - I/O, select  
+    > > - channel  
+    > > - 等待锁  
+    > > - 函数调用（有时）  
+    > > - runtime.Gosched()  
 
 
 

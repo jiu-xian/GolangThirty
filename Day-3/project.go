@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"learngo/GolangThirty/Day-3/fib"
 	"learngo/GolangThirty/Day-3/testing"
+	"time"
 )
 
 type retriever interface {
@@ -42,6 +43,17 @@ func tryRecover() {
 	panic(123)
 }
 
+func goPrint() {
+	for i := 0; i < 1000; i++ {
+		go func(i int) {
+			for {
+				fmt.Println("hello", i)
+			}
+		}(i)
+	}
+	time.Sleep(time.Millisecond)
+}
+
 func main() {
 	fmt.Println("第三天的练习：")
 	var r retriever = getRetriever()
@@ -52,4 +64,6 @@ func main() {
 	tryDefer()
 
 	tryRecover()
+
+	goPrint()
 }
