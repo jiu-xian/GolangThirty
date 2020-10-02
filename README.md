@@ -231,6 +231,19 @@
     > > - 函数调用（有时）  
     > > - runtime.Gosched()  
 
+6. channel  
+    > - channel是一等公民  
+    > > - 创建 channel  
+    > > - buffered channel  
+    > > - close channel  
+    > > - range channel  
+    > - 使用channel等待任务结束  
+    > - 使用channel遍历树  
+    > - 使用select进行调度  
+    > > - select case 的使用  
+    > > - nil channel的使用  
+    > > - 定时器的使用  
+
 
 
 
