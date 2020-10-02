@@ -6,6 +6,7 @@ import (
 )
 
 //结构体
+//使用别名的方式扩展类型
 type myTreeNode struct {
 	node *tree.Node
 }

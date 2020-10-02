@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+//实现接口功能
 type Retriever struct{}
 
 func (Retriever) Get(url string) string {
