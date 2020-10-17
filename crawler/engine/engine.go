@@ -22,10 +22,10 @@ func Run(seeds ...Request) { //向run函数传入种子参数，该参数是一�
 			log.Printf("Fetcher : Error "+"fetching url %s: %v", r.Url, err)
 			continue //如果获取body出错，打印出错信息后继续执行下一条任务
 		}
-		parserResult := r.ParserFunc(body)                    //对该任务链接所返回的body执行解析函数并将结果返回给一个名为parserresult的变量
-		requests = append(requests, parserResult.Requests...) //将解析结果中所包含的请求信息添加到任务列表中作为新的任务
+		parseResult := r.ParseFunc(body)                     //对该任务链接所返回的body执行解析函数并将结果返回给一个名为parserresult的变量
+		requests = append(requests, parseResult.Requests...) //将解析结果中所包含的请求信息添加到任务列表中作为新的任务
 
-		for _, item := range parserResult.Items {
+		for _, item := range parseResult.Items {
 			log.Printf("Got item %v", item) //将解析结果中的items打印出来作为日志
 		}
 	}
