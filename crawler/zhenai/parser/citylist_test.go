@@ -6,12 +6,12 @@ import (
 )
 
 //为citylist解析器编写测试
-func TestParserCityList(t *testing.T) {
+func TestParseCityList(t *testing.T) {
 	contents, err := ioutil.ReadFile("citylist_test_data.html") //读取事先保存的测试用文件
 	if err != nil {
 		panic(err)
 	}
-	result := ParserCityList(contents) //调用城市列表解析函数对测试文档进行处理，返回解析结果
+	result := ParseCityList(contents) //调用城市列表解析函数对测试文档进行处理，返回解析结果
 
 	//对解析结果进行比对
 	const resultSize = 470

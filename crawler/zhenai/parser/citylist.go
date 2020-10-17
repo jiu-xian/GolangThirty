@@ -13,7 +13,7 @@ func ParseCityList(contents []byte) engine.ParseResult { //定义一个城市列
 
 	result := engine.ParseResult{} //定一个解析结果类型的结构体变量result
 
-	//limit := 20
+	limit := 20
 
 	for _, m := range matches { //针对查找到的每一个结果，将其赋值给变量m，此处m是一个数组
 		result.Items = append(result.Items, "City: "+string(m[2])) //将m的第3个元素添加给解析结果的items变量
@@ -21,12 +21,11 @@ func ParseCityList(contents []byte) engine.ParseResult { //定义一个城市列
 			Url:       string(m[1]), //注意传输的数据类型
 			ParseFunc: ParseCity,    //此处尚未定义具体的解析函数，所以用一个空函数代替nil以正常编译
 		})
-		/*
-			limit--
-			if limit == 0 {
-				break
-			}
-		*/
+
+		limit--
+		if limit == 0 {
+			break
+		}
 
 	}
 	return result //返回城市列表解析器的解析结果

@@ -5,13 +5,13 @@ import (
 	"testing"
 )
 
-func TestParserCity(t *testing.T) {
+func TestParseCity(t *testing.T) {
 	contents, err := ioutil.ReadFile("city_test_data.html")
 	if err != nil {
 		panic(err)
 	}
 
-	result := ParserCity(contents)
+	result := ParseCity(contents)
 	const resultSize = 20
 
 	if len(result.Items) != resultSize {
