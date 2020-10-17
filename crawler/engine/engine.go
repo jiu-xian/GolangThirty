@@ -6,6 +6,7 @@ import (
 )
 
 //定义engine的执行函数
+
 func Run(seeds ...Request) { //向run函数传入种子参数，该参数是一个不定数量的request结构体
 	var requests []Request //声明一个以request结构体为元素的任务列表requests
 	for _, r := range seeds {
