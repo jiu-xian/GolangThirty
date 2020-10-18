@@ -5,9 +5,10 @@ import (
 	"log"
 )
 
+//定义一个简单的引擎，它是一个结构体
 type SimpleEngine struct{}
 
-//定义engine的执行函数
+//定义该引擎的执行函数
 func (e SimpleEngine) Run(seeds ...Request) { //向run函数传入种子参数，该参数是一个不定数量的request结构体
 	var requests []Request //声明一个以request结构体为元素的任务列表requests
 	for _, r := range seeds {
@@ -29,7 +30,7 @@ func (e SimpleEngine) Run(seeds ...Request) { //向run函数传入种子参数�
 }
 
 func worker(r Request) (ParseResult, error) {
-	log.Printf("Fetching %s", r.Url) //打印该任务的url链接作为日志
+	//log.Printf("Fetching %s", r.Url) //打印该任务的url链接作为日志
 
 	body, err := fetcher.Fetch(r.Url) //使用抓取器中的抓取函数获取该任务中的链接所对应的body
 	if err != nil {
